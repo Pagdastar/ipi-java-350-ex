@@ -61,6 +61,44 @@ public class EmployeTest {
         Assertions.assertEquals(0, anneeAnciennete.intValue());
     }
 
+    @Test
+    public void getAugmenterSalaire(){
+        //Given
+        Employe e = new Employe();
+        e.setSalaire(1700.0);
+
+        //When
+        Double salaireAugmente = e.augmenterSalaire(0.1);
+
+        //Then
+        Assertions.assertEquals(1870.0,salaireAugmente.doubleValue());
+    }
+    @Test
+    public void getAugmenterSalairePourcentageSuperieurA1(){
+        //Given
+        Employe e = new Employe();
+        e.setSalaire(1700.0);
+
+        //When
+        Double salaireAugmente = e.augmenterSalaire(2.0);
+
+        //Then
+        Assertions.assertEquals(1700.0,salaireAugmente.doubleValue());
+    }
+
+    @Test
+    public void getAugmenterSalairePourcentageNul(){
+        //Given
+        Employe e = new Employe();
+        e.setSalaire(1500.0);
+
+        //When
+        Double salaireAugmente = e.augmenterSalaire(0.0);
+
+        //Then
+        Assertions.assertEquals(1500.0,salaireAugmente.doubleValue());
+    }
+
     @ParameterizedTest
     @CsvSource({
             "1, 'T12345', 0, 1.0, 1000.0",
